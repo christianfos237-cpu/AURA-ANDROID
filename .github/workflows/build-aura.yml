@@ -30,10 +30,9 @@ jobs:
           gradle-version: "8.9"
 
       - name: Extraire le projet AURA
-        run: |
-          unzip -o AURA_ANDROID_PROJET.zip -d .
+        run: unzip -o AURA_ANDROID_PROJET.zip -d .
 
-            - name: Corriger la compatibilite Java et Kotlin
+      - name: Corriger la compatibilite Java et Kotlin
         run: |
           sed -i '/^android {/a\    compileOptions {\n        sourceCompatibility = JavaVersion.VERSION_17\n        targetCompatibility = JavaVersion.VERSION_17\n    }' app/build.gradle.kts
 
@@ -45,4 +44,4 @@ jobs:
         with:
           name: AURA-APK
           path: app/build/outputs/apk/debug/app-debug.apk
-          if-no-files-found: error
+          if-no-files-found: errorerror
